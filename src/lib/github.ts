@@ -60,7 +60,7 @@ function buildProfile(login: string, repos: Repo[], limited: boolean): Profile {
 }
 
 export async function analyze(username: string): Promise<Profile> {
-  const token = process.env.GITHUB_TOKEN;
+  const token = process.env.GITHUB_TOKEN ?? process.env.GITHUB_TOKEN_2;
   if (token && !tokenInvalid) {
     try {
       const response = await fetch('https://api.github.com/graphql', {
